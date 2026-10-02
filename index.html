@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Quest — Arcade Task Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Pixel Quest home">
+        <span class="brand-mark">✦</span>
+        <span>PIXEL<br /><b>QUEST</b></span>
+      </a>
+      <div class="status-chip"><span class="status-dot"></span> PLAYER 01 <span class="divider">/</span> ON A ROLL</div>
+      <div class="high-score"><span>HIGH SCORE</span><strong id="highScore">000000</strong></div>
+    </header>
+
+    <main id="top" class="shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">YOUR DAY, ARCADE MODE</p>
+          <h1>Make progress.<br /><em>Get the dopamine.</em></h1>
+          <p class="hero-text">Drop your tasks in the queue, hit start, and let the arcade choose your next quest. Every clear earns points, streaks, and a tiny victory lap.</p>
+          <a class="scroll-link" href="#quest-board">↓ VIEW QUEST BOARD</a>
+        </div>
+        <div class="hero-orbit" aria-hidden="true">
+          <div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div><div class="orbit-ring ring-three"></div>
+          <div class="hero-token">✦</div><span class="orbit-label label-one">FOCUS</span><span class="orbit-label label-two">PLAY</span><span class="orbit-label label-three">CLEAR</span>
+        </div>
+      </section>
+
+      <section id="quest-board" class="workspace">
+        <aside class="task-panel panel">
+          <div class="panel-heading"><div><p class="eyebrow">01 / QUEUE UP</p><h2>Quest board</h2></div><span class="count-badge" id="taskCount">0</span></div>
+          <form id="taskForm" class="task-form">
+            <label for="taskInput">What needs doing?</label>
+            <div class="input-row"><input id="taskInput" type="text" maxlength="80" placeholder="e.g. Ship the landing page" autocomplete="off" /><button class="icon-button" type="submit" aria-label="Add task">+</button></div>
+          </form>
+          <div class="filter-row" role="group" aria-label="Filter tasks"><button class="filter active" data-filter="all">ALL <span id="allCount">0</span></button><button class="filter" data-filter="active">IN PLAY <span id="activeCount">0</span></button><button class="filter" data-filter="done">CLEARED <span id="doneCount">0</span></button></div>
+          <div id="taskList" class="task-list" aria-live="polite"></div>
+          <div id="emptyState" class="empty-state"><span>✹</span><p>Your queue is empty.</p><small>Add a quest to get the cabinet humming.</small></div>
+        </aside>
+
+        <section class="arcade panel">
+          <div class="panel-heading arcade-heading"><div><p class="eyebrow">02 / PRESS START</p><h2>Quest picker</h2></div><span class="coin-label">CREDITS <b>∞</b></span></div>
+          <div class="cabinet">
+            <div class="cabinet-top"><span>PIXEL QUEST</span><span>★ ★ ★</span></div>
+            <div class="screen-shell"><div class="screen" id="gameScreen"><div class="screen-stars"></div><div class="screen-content"><span class="screen-kicker">READY PLAYER?</span><div class="pixel-word">PICK<br /><span>YOUR</span><br />QUEST</div><span class="screen-hint">ADD TASKS TO BEGIN</span></div></div></div>
+            <div class="cabinet-controls"><div class="joystick"><span></span></div><div class="control-copy"><button id="spinButton" class="start-button" type="button">START GAME <span>▶</span></button><p>THE CABINET PICKS<br />YOUR NEXT MOVE</p></div><div class="buttons"><i></i><i></i></div></div>
+            <div class="cabinet-base"></div>
+          </div>
+          <div class="selected-task" id="selectedTask"><span class="target-icon">⌖</span><div><small>NEXT QUEST</small><strong id="selectedTaskText">No quest selected yet</strong></div><button id="completeButton" class="complete-button" type="button" disabled>✓ CLEAR IT</button></div>
+        </section>
+      </section>
+
+      <section class="stats-strip">
+        <div class="stat"><span class="stat-icon">✦</span><div><small>QUESTS CLEARED</small><strong id="clearedStat">0</strong></div></div>
+        <div class="stat"><span class="stat-icon orange">◒</span><div><small>ACTIVE STREAK</small><strong><span id="streakStat">0</span> <small>DAYS</small></strong></div></div>
+        <div class="stat"><span class="stat-icon pink">♢</span><div><small>XP BANKED</small><strong id="xpStat">0000</strong></div></div>
+        <div class="quote-stat"><span>“</span><p id="motivation">Small quests. Big momentum.</p></div>
+      </section>
+    </main>
+    <footer><span>PIXEL QUEST © 2025</span><span>BUILT FOR THE NEXT LEVEL <b>↗</b></span></footer>
+    <div id="toast" class="toast" role="status"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
